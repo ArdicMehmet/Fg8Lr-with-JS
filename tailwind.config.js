@@ -13,6 +13,7 @@ export default {
         deep_orange:"#EF6B4A",
         deep_purple:"#6251DD",
         white:"#FFFFFF",
+        inputBg:'#F4F4FF'
       }
     },
   },
