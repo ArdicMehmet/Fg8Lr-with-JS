@@ -1,13 +1,11 @@
 import './App.css'
 import './css/font.css'
-
+import ClassicBtn from './components/buttons/classic';
 function App() {
 
   return (
     <>
-      <h1 className="font-manrope">
-         Hello world!
-      </h1>
+      <ClassicBtn name={"Register"} type={1}/>
     </>
   )
 }
