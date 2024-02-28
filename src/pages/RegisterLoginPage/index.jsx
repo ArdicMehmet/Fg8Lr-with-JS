@@ -7,8 +7,8 @@ import WelcomeIntroduction from '../../components/introduction/welcome'
 import InputGroup from '../../components/inputGroup/index'
 import ClassicBtn from '../../components/buttons/classic'
 
-import {validateForm} from '../../validations/registerValidation'
-
+import {validateForm as registerValidate} from '../../validations/registerValidation'
+import {validateForm as loginValidate} from '../../validations/loginValidation.jsx'
 import LogoXl from '../../images/logo/logo-xl.png'
 import { baseUrl } from "../../api/pitonTechnology.jsx";
 
@@ -29,9 +29,7 @@ function RegisterAndLoginPage() {
       password: '',
     },
     onSubmit: values => {
-      console.log("On submit values: ", values);
-      const formTest = validateForm(values);
-      console.log("form test : ", formTest);
+      const formTest = registerValidate(values);
       let errorDescription = {}
       if (!formTest.status) {
 
@@ -69,29 +67,37 @@ function RegisterAndLoginPage() {
       rememberMe:false,
     },
     onSubmit: values => {    
-      console.log(values);
+      const formTest = loginValidate(values);
+      let errorDescription = {}
+      if (!formTest.status) {
 
-      axios({
-        method: 'post',
-        url: `${baseUrl}api/rest/login`,
-        headers: {}, 
-        data: {
-          ...values
-        }
-      }).then(response => {
-        console.log("Then icinde response", response);
+        formTest.errors.email ? errorDescription["email"] = formTest.errors.email : ''
+        formTest.errors.password ? errorDescription["password"] = formTest.errors.password : ''
 
-        if(response.status != 200){
-          alert('Register is successfully, you are being directed...')
+        alert(JSON.stringify(errorDescription));
+      }
+      else{
+        axios({
+          method: 'post',
+          url: `${baseUrl}api/rest/login`,
+          headers: {}, 
+          data: {
+            ...values
+          }
+        }).then(response => {
+          console.log("Then icinde response", response);
+  
+          if(response.status != 200){
+            alert('Register is successfully, you are being directed...')
+            navigate('/home');
+          }
+        }).catch(e=>{
+  
+          alert('Register is unsuccessfully but you are being directed...')
           navigate('/home');
-        }
-      }).catch(e=>{
-
-        alert('Register is unsuccessfully but you are being directed...')
-        navigate('/home');
-      })
-
-
+        })
+      }
+      
     },
   });
 

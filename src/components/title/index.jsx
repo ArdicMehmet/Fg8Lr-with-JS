@@ -2,9 +2,9 @@ import React from 'react'
 import backIcon from "../../images/icons/BackArrow.png"
 function Title({ categoryName, categoryId }) {
     return (
-        <div className='px-[3rem] flex'>
-            <div className='flex items-center py-[6.5px] cursor-pointer'><img className='w-[20px] h-[20px]' src={backIcon} alt="backArrow" /></div>
-            <p className='font-bold text-2xl px-2.5 py-[6.5px]'>{categoryName}</p>
+        <div className="w-full flex justify-between mb-5">
+            <p className="font-bold text-3xl cursor-pointer">{categoryName}</p>
+            <p className='text-deep_orange font-bold text-xl cursor-pointer flex items-end' >View all</p>
         </div>
     )
 }

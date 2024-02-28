@@ -1,0 +1,32 @@
+
+.caroselItem{
+    height: 400px; 
+}
+
+.alice-carousel__dots .__active{
+    background-color: var(--deep_orange) !important;
+} 
+.alice-carousel__prev-btn{
+    display: none !important;
+}
+.alice-carousel__next-btn{
+    display: none !important;
+}
+
+@media only screen and (max-width: 1200px) {
+    .caroselItem{
+        height: 240px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .caroselItem{
+        height: 220px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .caroselItem{
+        height: 150px;
+    }
+}
