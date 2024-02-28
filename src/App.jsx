@@ -6,19 +6,21 @@ import InputGroup from './components/inputGroup';
 import CardComponent from './components/cards/cardComponent';
 import CardPage from './components/cards/cardPage';
 import CardDetail from './components/cards/cardDetail';
+import Header from './components/header';
 
 function App() {
 
   return (
     <>
-      <WelcomeIntroduction/>
+      <Header />
+      <WelcomeIntroduction />
       <ClassicBtn name={"Register"} type={1} />
       <ClassicBtn name={"Login"} type={2} />
       <InputGroup labelName={"E-mail"} inputName={"email"} inputType={"text"} placeHolder={"john@email.com"} />
       <InputGroup labelName={"Password"} inputName={"password"} inputType={"password"} placeHolder={"*******"} />
-      <CardComponent/>
-      <CardPage/>
-      <CardDetail/>
+      <CardComponent />
+      <CardPage />
+      <CardDetail />
     </>
   )
 }

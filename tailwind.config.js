@@ -15,6 +15,7 @@ export default {
         white:"#FFFFFF",
         inputBg:'#F4F4FF',
         cardBg:"#F4F4FF",
+        navyBlue:"#090937",
       }
     },
   },
