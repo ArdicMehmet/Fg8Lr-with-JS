@@ -7,12 +7,14 @@ import CardComponent from './components/cards/cardComponent';
 import CardPage from './components/cards/cardPage';
 import CardDetail from './components/cards/cardDetail';
 import Header from './components/header';
+import Title from './components/title';
 
 function App() {
 
   return (
     <>
       <Header />
+      <Title categoryName={"Best Seller"} categoryId={1}/>
       <WelcomeIntroduction />
       <ClassicBtn name={"Register"} type={1} />
       <ClassicBtn name={"Login"} type={2} />

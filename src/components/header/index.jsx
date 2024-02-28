@@ -7,7 +7,7 @@ import heart_icon from "../../images/icons/Heart.png";
 import shop_icon from "../../images/icons/Shop.png";
 function Header() {
     return (
-        <header className='container bg-white mx-auto px-[3rem] py-[1.75rem] flex justify-between'>
+        <header className='container bg-white mx-auto px-[3rem] py-[1.75rem] flex justify-between drop-shadow'>
             <div><img src={logo_sm} alt="logo-sm" /></div>
             <div className='brand max-w-max relative flex justify-center mx-auto'><input type="text" className='bg-inputBg px-[50px] py-2.5 text-xl w-[800px] outline-none rounded' placeholder='Search' /></div>
             <div className='flex'>
