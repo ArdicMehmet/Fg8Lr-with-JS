@@ -1,8 +1,12 @@
+import { useNavigate } from "react-router-dom"
 import img from "../../images/imagePage.png"
 
-function CardPage() {
+function CardPage({bookId}) {
+
+  const navigate = useNavigate();
+  
   return (
-    <div className="p-5 bg-cardBg font-monarope w-80 flex flex-col rounded cursor-pointer rounded">
+    <div className="p-5 bg-cardBg font-monarope w-80 flex flex-col rounded cursor-pointer rounded" onClick={ _ => navigate(`/book-details/${bookId}`)}>
       <div className="w-full flex justify-center">
         <img className="w-[200px] h-[300px] object-cover" src={img} alt="image" />
       </div>

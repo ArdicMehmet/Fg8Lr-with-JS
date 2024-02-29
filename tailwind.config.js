@@ -10,6 +10,14 @@ export default {
         manrope:"Manrope",
       },
       colors:{
+        gray: {
+          50: "#f4f4ff",
+          900: "#090937",
+          "900_05": "#09093705",
+          "900_66": "#09093766",
+          "900_99": "#09093799",
+          "900_19": "#09093719",
+        },
         deep_orange:"#EF6B4A",
         deep_purple:"#6251DD",
         white:"#FFFFFF",

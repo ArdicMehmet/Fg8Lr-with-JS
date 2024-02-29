@@ -4,6 +4,7 @@ import Carousel from '../../components/carousel'
 import HomeSellers from '../../components/sellers/homeSellers'
 import Footer from '../../components/footer/index'
 import "../../css/aliceCarousel.css"
+import ScrollToTop from '../../components/scroll'
 
 function HomePage() {
   return (
@@ -12,11 +13,12 @@ function HomePage() {
       <main className='container px-[3rem] mb-[60px]'>
         <div>
           <Carousel />
-          <HomeSellers title={"Best Sellers"} bookName={"Dune"} bookAuthor={"Deneme"} price={"87.5$"}/>
-          <HomeSellers title={"Classics"} bookName={"Dune"} bookAuthor={"Deneme"} price={"87.5$"}/>
+          <HomeSellers title={"Best Sellers"} titleId={1} bookId={1} bookName={"Dune"} bookAuthor={"Deneme"} price={"87.5$"}/>
+          <HomeSellers title={"Classics"}  titleId={2} bookId={2} bookName={"Dune2"} bookAuthor={"Deneme"} price={"87.5$"}/>
         </div>
       </main>
       <Footer/>
+      <ScrollToTop/>
     </>
   )
 }
