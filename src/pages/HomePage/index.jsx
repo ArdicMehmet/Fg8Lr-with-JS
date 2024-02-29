@@ -5,8 +5,12 @@ import HomeSellers from '../../components/sellers/homeSellers'
 import Footer from '../../components/footer/index'
 import "../../css/aliceCarousel.css"
 import ScrollToTop from '../../components/scroll'
+import { useSelector, useDispatch } from 'react-redux'
 
 function HomePage() {
+  const {categories} = useSelector(state => state.category);
+
+  console.log("categories : ", categories);
   return (
     <>
       <Header />
