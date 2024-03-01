@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../../components/header'
 import Carousel from '../../components/carousel'
 import HomeSellers from '../../components/sellers/homeSellers'
@@ -6,23 +6,43 @@ import Footer from '../../components/footer/index'
 import "../../css/aliceCarousel.css"
 import ScrollToTop from '../../components/scroll'
 import { useSelector, useDispatch } from 'react-redux'
+import { fetchAllCategories } from '../../redux/book/categorySlice'
+import { fetchAllBooks } from '../../redux/book/bookSlice'
+import { useLocation } from 'react-router-dom'
 
 function HomePage() {
-  const {categories} = useSelector(state => state.category);
+  const { getCategories } = useSelector(state => state.category);
+  const dispatch = useDispatch();
+  const location = useLocation();
+  useEffect(() => {
+    dispatch(fetchAllCategories());
+  }, [location])
 
-  console.log("categories : ", categories);
+  useEffect(() => {
+    getCategories.forEach(category => {
+      dispatch(fetchAllBooks(category.id));
+    })
+
+  }, [getCategories])
+
   return (
     <>
       <Header />
       <main className='container px-[3rem] mb-[60px]'>
         <div>
           <Carousel />
-          <HomeSellers title={"Best Sellers"} titleId={1} bookId={1} bookName={"Dune"} bookAuthor={"Deneme"} price={"87.5$"}/>
-          <HomeSellers title={"Classics"}  titleId={2} bookId={2} bookName={"Dune2"} bookAuthor={"Deneme"} price={"87.5$"}/>
+          {
+            getCategories ?
+              getCategories.map((category, i) =>
+                <HomeSellers key={i} title={category.name} titleId={category.id} categoryId={category.id}
+                />)
+              :
+              ''
+          }
         </div>
       </main>
-      <Footer/>
-      <ScrollToTop/>
+      <Footer />
+      <ScrollToTop />
     </>
   )
 }
