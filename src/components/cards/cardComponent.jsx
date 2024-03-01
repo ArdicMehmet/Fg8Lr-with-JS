@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
-import img from "../../images/imageComponent.png"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import { baseUrl } from "../../api/pitonTechnology";
 function CardComponent({ bookId, bookName, bookAuthor, price, cover }) {
 
   const navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState('')
   useEffect(() => {
     axios({
-      url: 'https://assign-api.piton.com.tr/api/rest/cover_image',
+      url: `${baseUrl}/api/rest/cover_image`,
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -20,9 +20,6 @@ function CardComponent({ bookId, bookName, bookAuthor, price, cover }) {
     }).then((img)=>setImageUrl(`${img.data.action_product_image.url}`));
    
   }, [])
-  useEffect(() => {
-    console.log("imageee",imageUrl);
-  }, [imageUrl])
 
   return (
     <div className="p-2.5 bg-cardBg font-monarope w-80 flex rounded cursor-pointer" onClick={_ => navigate(`/book-details/${bookId}`)}>

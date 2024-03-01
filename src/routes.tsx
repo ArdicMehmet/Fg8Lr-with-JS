@@ -18,7 +18,7 @@ function ProjectRoutes() {
                         <Route path='/register' element={<RegisterAndLoginPage />} />
                         <Route path='/login' element={<RegisterAndLoginPage />} />
                         <Route path='/home' element={<HomePage />} />
-                        <Route path='/category/:id' element={<CategoryPage />} />
+                        <Route path='/category/:id/:categoryName' element={<CategoryPage />} />
                         <Route path='/book-details/:id' element={<BookDetailsPage />} />
                         {/* <Route path='/*' element={} /> */}
                     </Routes>

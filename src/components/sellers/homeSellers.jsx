@@ -24,7 +24,7 @@ function HomeSellers({ title, titleId, categoryId }) {
             <div className="sellMain w-full grid grid-cols-4 gap-5">
                 {books ? books.map((book,i)=>{
                    if(i<4){
-                    return <CardComponent bookId={book.id} cover={book.cover} bookName={book.name} bookAuthor={book.author} price={book.price} />
+                    return <CardComponent key={i} bookId={book.id} cover={book.cover} bookName={book.name} bookAuthor={book.author} price={book.price} categoryName={title} />
                    }
                    return <></>
                 }): ''}
