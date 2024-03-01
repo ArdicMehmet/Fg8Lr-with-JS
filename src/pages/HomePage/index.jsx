@@ -8,12 +8,21 @@ import ScrollToTop from '../../components/scroll'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchAllCategories } from '../../redux/book/categorySlice'
 import { fetchAllBooks } from '../../redux/book/bookSlice'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+
 
 function HomePage() {
+  
   const { getCategories } = useSelector(state => state.category);
+  const { user } = useSelector(state => state.user);
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    !user ? navigate('/login') : '';
+  },[location])
+
   useEffect(() => {
     dispatch(fetchAllCategories());
   }, [location])
@@ -24,7 +33,7 @@ function HomePage() {
     })
 
   }, [getCategories])
-
+  
   return (
     <>
       <Header />

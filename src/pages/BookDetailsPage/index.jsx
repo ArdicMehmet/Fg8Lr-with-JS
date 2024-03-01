@@ -8,13 +8,20 @@ import axios from 'axios'
 
 import ScrollToTop from '../../components/scroll'
 
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useLocation,useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 export default function BookDetails() {
+  
   const navigate = useNavigate();
   const params = useParams();
-  
+  const location = useLocation();
+
+  const { user } = useSelector(state => state.user);
+
+  useEffect(()=>{
+    !user ? navigate('/login') : '';
+  },[location])
   
   const { getProducts } = useSelector(state => state.book);
   const [book, setBook] = useState({});
