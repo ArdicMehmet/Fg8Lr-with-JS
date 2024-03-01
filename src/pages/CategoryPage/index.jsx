@@ -15,7 +15,7 @@ function CategoryPage() {
   const { user } = useSelector(state => state.user);
 
   useEffect(()=>{
-    !user ? navigate('/login') : '';
+    (user || (localStorage.getItem("auth"))) ? "" : navigate('/login');
   },[location])
 
   return (

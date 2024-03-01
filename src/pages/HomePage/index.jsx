@@ -20,7 +20,7 @@ function HomePage() {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    !user ? navigate('/login') : '';
+    (user || (localStorage.getItem("auth"))) ? "" : navigate('/login');
   },[location])
 
   useEffect(() => {

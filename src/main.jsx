@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 
 import './index.css'
 import './css/color.css'
+import './css/messageBox/style.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>

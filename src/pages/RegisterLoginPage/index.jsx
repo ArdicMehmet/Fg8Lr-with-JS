@@ -26,7 +26,7 @@ function RegisterAndLoginPage() {
 
   useEffect(() => {
     setPageType(location.pathname)
-    // Burda beni hatırla mevcutsa home a yönlendir
+    localStorage.getItem("auth") ? navigate('/home'): ''
   }, [location])
 
   const registerFormik = useFormik({
@@ -44,7 +44,7 @@ function RegisterAndLoginPage() {
         formTest.errors.email ? errorDescription["email"] = formTest.errors.email : ''
         formTest.errors.password ? errorDescription["password"] = formTest.errors.password : ''
 
-        alert(JSON.stringify(errorDescription));
+        alert(`Register is unsuccessfully, ${JSON.stringify(errorDescription)}`)
       }
       else {
         axios({
@@ -56,7 +56,7 @@ function RegisterAndLoginPage() {
           }
         }).then(response => {
           if (response.status == 200) {
-            alert('Register is successfully, you are being directed...')
+            alert(`Register is successfully, you are being directed...,`)
             navigate('/login');
           }
         }).catch(e => {
@@ -80,8 +80,8 @@ function RegisterAndLoginPage() {
 
         formTest.errors.email ? errorDescription["email"] = formTest.errors.email : ''
         formTest.errors.password ? errorDescription["password"] = formTest.errors.password : ''
+        alert(`Login is unsuccessfully, ${JSON.stringify(errorDescription)}`)
 
-        alert(JSON.stringify(errorDescription));
       }
       else {
         axios({
@@ -93,18 +93,20 @@ function RegisterAndLoginPage() {
             password : values.password
           }
         }).then(response => {
-          console.log("Then icinde response", response);
 
           if (response.status == 200) {
-            alert('Register is successfully, you are being directed...')
-
-            dispatch(authChange());
+            dispatch(authChange()); 
+            if(remember){
+              localStorage.setItem('auth', true);
+            }
+            alert('"Login is successfully, you are being directed..."')
             navigate('/home');
+            
+            
           }
         }).catch(e => {
-
-          alert('Register is unsuccessfully')
-          navigate('/register');
+          
+          alert(`Register is unsuccessfully, please try again ${JSON.stringify(e)}`)
         })
       }
 
@@ -131,7 +133,6 @@ function RegisterAndLoginPage() {
                 <div className='mb-5 flex items-center'>
                   <input type="checkbox" onClick={handleClick} name={"remember"} id={"rememberMe"} className={`w-4 h-4 me-2 mt-1 accent-deep_purple border-deep_purple`} />
                   <label htmlFor={"rememberMe"} className={`text-left text-xl text-deep_purple font-semibold text-base text-deep_purple-400`}>{"Remember Me"}</label>
-                  {"user : "+user}
                 </div>
               </div>
               <div className='pb-[40px]'>

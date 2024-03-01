@@ -20,7 +20,7 @@ export default function BookDetails() {
   const { user } = useSelector(state => state.user);
 
   useEffect(()=>{
-    !user ? navigate('/login') : '';
+    (user || (localStorage.getItem("auth"))) ? "" : navigate('/login');
   },[location])
   
   const { getProducts } = useSelector(state => state.book);
